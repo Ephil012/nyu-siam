@@ -1,0 +1,40 @@
+{
+  "Main" : {
+    "event_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1,heading2,heading3,heading4,heading5,heading6",
+        "label" : "Event Title"
+      }
+    },
+    "picture" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Picture"
+      }
+    },
+    "description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label" : "Description"
+      }
+    },
+    "dates" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "time" : {
+            "type" : "Timestamp",
+            "config" : {
+              "label" : "time"
+            }
+          }
+        },
+        "label" : "Dates"
+      }
+    }
+  }
+}

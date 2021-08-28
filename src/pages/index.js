@@ -1,184 +1,113 @@
 import * as React from "react"
+import Navigation from "../components/navigation"
+import MathImage from "../images/math.svg"
+import Ajeet from "../images/Ajeet-Gary.png"
+import sayings from "../sayings"
+import ShowMoreText from "react-show-more-text";
+import {RoundedContainer, RegularContainer} from '../components/containers'
+import { graphql } from 'gatsby'
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-// markup
-const IndexPage = () => {
+const Header = () => {
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <div className="flex items-center flex-col my-8 mx-5 lg:flex-row lg:mx-20">
+      <div className="container">
+        <h1 className="font-semibold text-5xl">NYU Society For Industrial and Applied Math</h1>
+        <h3 className="text-xl text-gray-500 py-2">{sayings[Math.floor(Math.random() * sayings.length)]}</h3>
+      </div>
+      <img src={MathImage} className="h-80"></img>
+    </div>
   )
 }
+
+const Events = (props) => {
+  const eventsList = props.data.map((event, index) => 
+    <div key={index} className="flex flex-col rounded-xl my-10 space-y-5 lg:space-y-0 lg:space-x-10 lg:flex-row">
+      <GatsbyImage image={event.data.picture.gatsbyImageData} alt="" className="w-80 flex-shrink-0"></GatsbyImage>
+      <div className="flex flex-col space-y-2 text-center lg:text-left">
+        <h2 className="text-3xl font-semibold">{event.data.event_title.text}</h2>
+        <p className="text-l text-gray-500">02/11/2020, 02/25/2020, 03/11/2020, 03/25/2020, 04/08/2020, and 04/22/2020 at 6pm ET</p>
+        <p className="text-xl">{event.data.description.text}</p>
+        <div className="flex flex-wrap flex-col space-y-5 items-center lg:flex-row lg:space-x-10 lg:space-y-0">
+          <button className="bg-purple-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">RSVP</button>
+          <button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">YouTube</button>
+        </div>
+      </div>
+    </div>
+  );
+  return (
+    <RoundedContainer>
+      <h2 className="text-4xl font-semibold">See our upcoming events</h2>
+      {eventsList}
+      <a className="text-xl text-gray-500 font-semibold text-center">View past events</a>
+    </RoundedContainer>
+  )
+}
+
+const Instagram = (props) => {
+  console.log(props.data)
+  const postList = props.data.map((post, index) => 
+    <a>
+      <GatsbyImage key={index} image={post.node.localFile.childImageSharp.gatsbyImageData} alt="" className="m-4"></GatsbyImage>
+    </a>
+  );
+  return (
+    <RegularContainer>
+      <h2 className="text-4xl font-semibold text-center">Check out our Instagram</h2>
+      <div className="flex flex-row flex-wrap justify-center">
+        {postList}
+      </div>
+    </RegularContainer>
+  )
+}
+
+const IndexPage = ({data}) => {
+  return (
+    <div className="bg-purple-200 h-full w-full flex flex-col">
+      <Navigation></Navigation>
+      <Header></Header>
+      <Events data={data.allPrismicEvent.nodes}></Events>
+      <Instagram data={data.allInstaNode.edges}></Instagram>
+    </div>
+  )
+}
+
+export const query = graphql`
+  query HomeQuery {
+    allInstaNode {
+      edges {
+        node {
+          localFile {
+            url
+            childImageSharp {
+              gatsbyImageData(width:300, height:300)
+            }
+          }
+        }
+      }
+    }
+    allPrismicEvent {
+      nodes {
+        id
+        data {
+          event_title {
+            text
+          }
+          picture {
+            url
+            gatsbyImageData
+          }
+          description {
+            text
+          }
+          dates {
+            time
+          }
+        }
+      }
+    }
+  }
+`
+
 
 export default IndexPage
