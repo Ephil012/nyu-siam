@@ -1,12 +1,11 @@
 import * as React from "react"
 import Navigation from "../components/navigation"
 import MathImage from "../images/math.svg"
-import Ajeet from "../images/Ajeet-Gary.png"
 import sayings from "../sayings"
 import ShowMoreText from "react-show-more-text";
 import {RoundedContainer, RegularContainer} from '../components/containers'
 import { graphql } from 'gatsby'
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Header = () => {
   return (

@@ -22,6 +22,20 @@
         "label" : "Description"
       }
     },
+    "rsvp" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "rsvp",
+        "select" : null
+      }
+    },
+    "youtube" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "youtube",
+        "select" : null
+      }
+    },
     "dates" : {
       "type" : "Group",
       "config" : {
