@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://nyusiam.org",
     title: "NYU SIAM",
   },
   plugins: [
@@ -13,7 +13,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        quality: 90
+        quality: 50,
+        icon: '/src/images/icon.png'
       }
     },
     `gatsby-transformer-sharp`,
