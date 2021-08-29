@@ -8,7 +8,7 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 const Header = () => {
   return (
-    <div className="flex items-center flex-col my-8 mx-5 lg:flex-row lg:mx-20">
+    <div className="flex items-center flex-col my-8 mx-5 lg:flex-row bg-purple-200 lg:mx-20">
       <div className="container">
         <h1 className="font-semibold text-5xl">NYU Society For Industrial and Applied Math</h1>
         <h3 className="text-xl text-gray-500 py-2">{sayings[Math.floor(Math.random() * sayings.length)]}</h3>
