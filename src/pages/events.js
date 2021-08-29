@@ -54,8 +54,8 @@ const Events = ({data}) => {
           </p>
           <p className="text-xl">{event.data.description.text}</p>
           <div className="flex flex-wrap flex-col space-y-5 items-center lg:flex-row lg:space-x-10 lg:space-y-0">
-            {event.data.rsvp.url != null ? <button className="bg-purple-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">RSVP</button>: null }
-            {event.data.youtube.url != null ? <button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">YouTube</button>: null }
+            {event.data.rsvp.url != null ? <a href={event.data.rsvp.url}><button className="bg-purple-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">RSVP</button></a>: null }
+            {event.data.youtube.url != null ? <a href={event.data.youtube.url}><button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">YouTube</button></a>: null }
           </div>
         </div>
       </div>
