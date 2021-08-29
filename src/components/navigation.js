@@ -1,3 +1,4 @@
+import { StaticImage } from "gatsby-plugin-image"
 import * as React from "react"
 
 const Navigation = () => {
@@ -7,7 +8,7 @@ const Navigation = () => {
     return (
         <nav className="flex items-center flex-col lg:flex-row lg:justify-between bg-purple-200 p-6">
             <div className="flex w-full justify-between lg:w-auto">
-                <img className="w-20" src="https://images.prismic.io/nyusiam/4103f992-63bc-4163-8930-84784964b681_logo.png?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=3137&h=1662"/>
+                <a href="/"><StaticImage src="../images/icon.png" objectFit="contain" alt="" className="w-20"></StaticImage></a>
                 <button className="text-black font-semibold hover:text-opacity-70 lg:hidden" onClick={onClick}>Menu</button>
             </div>
             <div className={"lg:flex items-center flex-col lg:flex-row" + (showMenu ? " flex" : " hidden")}>

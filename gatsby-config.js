@@ -10,7 +10,12 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        quality: 90
+      }
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-source-prismic',

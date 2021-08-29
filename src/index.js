@@ -1,8 +1,8 @@
 import * as React from "react"
-import Navigation from "../components/navigation"
-import sayings from "../sayings"
+import Navigation from "./components/navigation"
+import sayings from "./sayings"
 import ShowMoreText from "react-show-more-text";
-import {RoundedContainer, RegularContainer} from '../components/containers'
+import {RoundedContainer, RegularContainer} from './components/containers'
 import { graphql } from 'gatsby'
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
@@ -13,7 +13,7 @@ const Header = () => {
         <h1 className="font-semibold text-5xl">NYU Society For Industrial and Applied Math</h1>
         <h3 className="text-xl text-gray-500 py-2">{sayings[Math.floor(Math.random() * sayings.length)]}</h3>
       </div>
-      <StaticImage src="../images/math.svg" objectFit="contain" alt="" className="h-80"></StaticImage>
+      <StaticImage src="./images/math.svg" objectFit="contain" alt="" className="h-80"></StaticImage>
     </div>
   )
 }
@@ -26,7 +26,7 @@ const Events = (props) => {
       const date = new Date(item.time)
       console.log(date.toDateString())
       const day = String(date.getUTCDate()).padStart(2,'0')
-      const month = String(date.getUTCMonth()).padStart(2,'0')
+      const month = String(date.getUTCMonth() + 1).padStart(2,'0')
       const year = String(date.getUTCFullYear())
 
       let fullDate = month + "/" + day + "/" + year + " @ "
@@ -64,28 +64,9 @@ const Events = (props) => {
   return (
     <RoundedContainer>
       <h2 className="text-4xl font-semibold">See our upcoming events</h2>
-      {eventsList}
-      <a className="text-xl text-gray-500 font-semibold text-center">View past events</a>
+      {eventsList.length ? eventsList : <p className="text-center text-purple-500 text-semibold text-xl mt-4">No upcoming events at this time</p>}
+      <p className="text-xl text-gray-500 font-semibold text-center mt-4"><a href="./events">View past events</a></p>
     </RoundedContainer>
-  )
-}
-
-const Instagram = (props) => {
-  console.log(props.data)
-  const postList = props.data.map((post, index) => 
-    <GatsbyImage objectFit="contain" key={post.node.id} image={post.node.localFile.childImageSharp.gatsbyImageData} alt="" className="m-4"></GatsbyImage>
-  );
-  return (
-    <RegularContainer>
-      <h2 className="text-4xl font-semibold text-center">Check out our Instagram</h2>
-      <div className="flex flex-row flex-wrap justify-center">
-        {postList}
-      </div>
-      <a src="https://www.instagram.com/nyu_siam/">
-        <StaticImage src="../images/instagram.png" objectFit="contain" alt="" className="h-10 self-center justify-self-center"></StaticImage>
-        <p className="font-semibold text-center text-purple-700">Visit our Instagram</p>
-      </a>
-    </RegularContainer>
   )
 }
 
@@ -95,28 +76,13 @@ const IndexPage = ({data}) => {
       <Navigation></Navigation>
       <Header></Header>
       <Events data={data.allPrismicEvent.nodes}></Events>
-      <Instagram data={data.allInstaNode.edges}></Instagram>
     </div>
   )
 }
 
 export const query = graphql`
-  query HomeQuery {
-    allInstaNode(sort: { fields: [timestamp], order: DESC}) {
-      edges {
-        node {
-          id
-          timestamp
-          localFile {
-            url
-            childImageSharp {
-              gatsbyImageData(width:300, height:300)
-            }
-          }
-        }
-      }
-    }
-    allPrismicEvent {
+  query HomeQuery($today: Date) {
+    allPrismicEvent(filter: {data: {dates: {elemMatch: {time: {gte: $today }}}}}) {
       nodes {
         id
         data {
