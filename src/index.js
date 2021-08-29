@@ -13,7 +13,7 @@ const Header = () => {
         <h1 className="font-semibold text-5xl">NYU Society For Industrial and Applied Math</h1>
         <h3 className="text-xl text-gray-500 py-2">{sayings[Math.floor(Math.random() * sayings.length)]}</h3>
       </div>
-      <StaticImage src="./images/math.svg" objectFit="contain" alt="" className="h-80"></StaticImage>
+      <StaticImage src="./images/math.svg" placeholder="blurred" objectFit="contain" alt="" className="h-48 lg:h-80"></StaticImage>
     </div>
   )
 }
@@ -91,7 +91,7 @@ export const query = graphql`
           }
           picture {
             url
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
           }
           description {
             text

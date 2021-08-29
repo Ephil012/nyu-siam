@@ -30,7 +30,7 @@ export const query = graphql`
           text
         }
         picture {
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
         }
         body {
             raw

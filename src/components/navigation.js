@@ -8,7 +8,7 @@ const Navigation = () => {
     return (
         <nav className="flex items-center flex-col lg:flex-row lg:justify-between bg-purple-200 p-6">
             <div className="flex w-full justify-between lg:w-auto">
-                <a href="/"><StaticImage src="../images/icon.png" objectFit="contain" alt="" className="w-20"></StaticImage></a>
+                <a href="/"><StaticImage placeholder="none" src="../images/icon.png" objectFit="contain" alt="" className="w-20"></StaticImage></a>
                 <button className="text-black font-semibold hover:text-opacity-70 lg:hidden" onClick={onClick}>Menu</button>
             </div>
             <div className={"lg:flex items-center flex-col lg:flex-row" + (showMenu ? " flex" : " hidden")}>

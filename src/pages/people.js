@@ -51,7 +51,7 @@ export const query = graphql`
         }
         people_list {
           profile {
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
           }
           name {
             text
