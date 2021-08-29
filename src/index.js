@@ -65,7 +65,7 @@ const Events = (props) => {
     <RoundedContainer>
       <h2 className="text-4xl font-semibold">See our upcoming events</h2>
       {eventsList.length ? eventsList : <p className="text-center text-purple-500 text-semibold text-xl mt-4">No upcoming events at this time</p>}
-      <p className="text-xl text-gray-500 font-semibold text-center mt-4"><a href="./events">View past events</a></p>
+      <p className="text-xl text-gray-500 font-semibold text-center mt-4"><a href="/events">View past events</a></p>
     </RoundedContainer>
   )
 }

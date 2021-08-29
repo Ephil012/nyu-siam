@@ -12,13 +12,13 @@ const Navigation = () => {
                 <button className="text-black font-semibold hover:text-opacity-70 lg:hidden" onClick={onClick}>Menu</button>
             </div>
             <div className={"lg:flex items-center flex-col lg:flex-row" + (showMenu ? " flex" : " hidden")}>
-                <a href="about" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
+                <a href="/about" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
                     About Us
                 </a>
-                <a href="people" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
+                <a href="/people" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
                     People
                 </a>
-                <a href="events" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
+                <a href="/events" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
                     Events
                 </a>
                 <a href="https://forms.gle/dDcWG4jYEjeVbLRr7" className="text-black font-semibold hover:text-opacity-70 pt-4 lg:pt-0 lg:pl-6">
