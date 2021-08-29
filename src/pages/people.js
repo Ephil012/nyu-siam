@@ -8,7 +8,7 @@ import { data } from "autoprefixer"
 const PeopleProfile = (props) => {
     return (
         <div className="flex flex-none flex-col items-center align-center w-full lg:w-96 m-10">
-            <GatsbyImage image={props.image} alt={props.name + " picture"} className="h-44 w-44 rounded-full flex-shrink-0"></GatsbyImage>
+            <GatsbyImage image={props.image} alt={props.name + " picture"} className="h-44 w-44 rounded-full flex-shrink-0"  imgClassName="rounded-full"></GatsbyImage>
             <h3 className="text-center text-xl font-semibold">{props.name}</h3>
             <h4 className="text-center text-l font-semibold text-gray-500">{props.role}</h4>
             <p className="text-center">{props.description}</p>
@@ -51,7 +51,7 @@ export const query = graphql`
         }
         people_list {
           profile {
-            gatsbyImageData(placeholder: BLURRED)
+            gatsbyImageData(placeholder: NONE)
           }
           name {
             text

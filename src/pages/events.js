@@ -94,7 +94,7 @@ query EventQuery {
         }
         picture {
           url
-          gatsbyImageData(placeholder: BLURRED)
+          gatsbyImageData(placeholder: NONE)
         }
         description {
           text
