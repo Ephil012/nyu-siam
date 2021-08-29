@@ -72,7 +72,7 @@ const Events = (props) => {
 
 const IndexPage = ({data}) => {
   return (
-    <div className="bg-purple-200 h-full w-full flex flex-col">
+    <div className="bg-purple-200 min-h-screen w-full flex flex-col">
       <Navigation></Navigation>
       <Header></Header>
       <Events data={data.allPrismicEvent.nodes}></Events>
