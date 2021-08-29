@@ -50,7 +50,7 @@ const Events = ({data}) => {
         <div className="flex flex-col space-y-2 text-center lg:text-left">
           <h2 className="text-3xl font-semibold">{event.data.event_title.text}</h2>
           <p className="text-l text-gray-500">
-            {dates.join(', ') + " EST"}
+            {dateStrings.join(', ') + " EST"}
           </p>
           <p className="text-xl">{event.data.description.text}</p>
           <div className="flex flex-wrap flex-col space-y-5 items-center lg:flex-row lg:space-x-10 lg:space-y-0">
