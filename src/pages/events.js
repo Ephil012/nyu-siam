@@ -46,7 +46,7 @@ const Events = ({data}) => {
     })
     var eventItem = (
       <div key={event.id} className="flex flex-col items-center rounded-xl my-10 space-y-5 lg:space-y-0 lg:items-start lg:space-x-10 lg:flex-row">
-        <GatsbyImage objectFit="contain" image={event.data.picture.gatsbyImageData} alt="" className="w-80 flex-shrink-0"></GatsbyImage>
+        <GatsbyImage objectFit="contain" image={event.data.picture.gatsbyImageData} alt="" className="w-80 h-20 flex-shrink-0"></GatsbyImage>
         <div className="flex flex-col space-y-2 text-center lg:text-left">
           <h2 className="text-3xl font-semibold">{event.data.event_title.text}</h2>
           <p className="text-l text-gray-500">
