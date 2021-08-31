@@ -70,12 +70,25 @@ const Events = (props) => {
   )
 }
 
+const Instagram = (props) => {
+  return (
+    <RegularContainer>
+      <h2 className="text-2xl font-semibold text-center">Check out our Instagram</h2>
+      <a src="https://www.instagram.com/nyu_siam/">
+        <StaticImage src="./images/instagram.png" objectFit="contain" alt="" className="h-10 self-center justify-self-center"></StaticImage>
+        <p className="font-semibold text-center text-purple-700">Visit our Instagram</p>
+      </a>
+    </RegularContainer>
+  )
+}
+
 const IndexPage = ({data}) => {
   return (
     <div className="bg-purple-200 min-h-screen w-full flex flex-col">
       <Navigation></Navigation>
       <Header></Header>
       <Events data={data.allPrismicEvent.nodes}></Events>
+      <Instagram/>
     </div>
   )
 }
