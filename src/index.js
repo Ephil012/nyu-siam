@@ -45,7 +45,7 @@ const Events = (props) => {
       dates.push(fullDate)
     })
     eventsList.push(
-      <div key={event.id} className="flex flex-col rounded-xl my-10 space-y-5 lg:space-y-0 lg:space-x-10 lg:flex-row">
+      <div key={event.id} className="flex flex-col items-center rounded-xl my-10 space-y-5 lg:space-y-0 lg:items-start lg:space-x-10 lg:flex-row">
         <GatsbyImage objectFit="contain" image={event.data.picture.gatsbyImageData} alt="" className="w-80 flex-shrink-0"></GatsbyImage>
         <div className="flex flex-col space-y-2 text-center lg:text-left">
           <h2 className="text-3xl font-semibold">{event.data.event_title.text}</h2>
@@ -73,11 +73,9 @@ const Events = (props) => {
 const Instagram = (props) => {
   return (
     <RegularContainer>
-      <div className="flex flex-col items-center align-center">
-        <h2 className="text-2xl font-semibold text-center">Check out our Instagram</h2>
+      <div className="flex flex-1 flex-col items-center mb-0">
         <a href="https://www.instagram.com/nyu_siam/">
           <StaticImage src="./images/instagram.png" placeholder="none" objectFit="contain" alt="" className="h-10 self-center justify-self-center"></StaticImage>
-          <p className="font-semibold text-center text-purple-700">Visit our Instagram</p>
         </a>
       </div>
     </RegularContainer>
