@@ -75,7 +75,7 @@ const Instagram = (props) => {
     <RegularContainer>
       <div className="flex flex-col items-center align-center">
         <h2 className="text-2xl font-semibold text-center">Check out our Instagram</h2>
-        <a src="https://www.instagram.com/nyu_siam/">
+        <a href="https://www.instagram.com/nyu_siam/">
           <StaticImage src="./images/instagram.png" placeholder="none" objectFit="contain" alt="" className="h-10 self-center justify-self-center"></StaticImage>
           <p className="font-semibold text-center text-purple-700">Visit our Instagram</p>
         </a>
