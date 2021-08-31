@@ -4,6 +4,8 @@ import { RoundedContainer } from '../components/containers'
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { graphql } from 'gatsby'
 import { data } from "autoprefixer"
+import { Link, RichText } from 'prismic-reactjs'
+import htmlSerializer from "../components/htmlSerializer"
 
 const PeopleProfile = (props) => {
     return (
@@ -11,7 +13,7 @@ const PeopleProfile = (props) => {
             <GatsbyImage image={props.image} alt={props.name + " picture"} className="h-44 w-44 rounded-full flex-shrink-0"  imgClassName="rounded-full"></GatsbyImage>
             <h3 className="text-center text-xl font-semibold">{props.name}</h3>
             <h4 className="text-center text-l font-semibold text-gray-500">{props.role}</h4>
-            <p className="text-center">{props.description}</p>
+            <RichText render={props.description} htmlSerializer={htmlSerializer}/>
         </div>
     )
 }
@@ -24,7 +26,7 @@ const PeoplePage = ({data}) => {
       image={person.profile.gatsbyImageData}
       name={person.name.text}
       role={person.role}
-      description={person.description.text}
+      description={person.description.raw}
       key={index}
     />
   );
@@ -58,7 +60,7 @@ export const query = graphql`
           }
           role
           description {
-            text
+            raw
           }
         }
       }

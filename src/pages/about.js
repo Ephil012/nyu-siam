@@ -7,7 +7,7 @@ import { Link, RichText } from 'prismic-reactjs'
 import htmlSerializer from "../components/htmlSerializer"
 
 const AboutPage = ({data}) => {
-    const document = data.prismicAbout.data
+    const document = data.prismicAbout.dataåå
     return (
     <div className="bg-purple-200 h-full w-full flex flex-col">
         <Navigation></Navigation>

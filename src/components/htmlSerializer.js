@@ -8,10 +8,9 @@ import { StaticImage } from "gatsby-plugin-image"
 const htmlSerializer = function (type, element, content, children, key) {
   switch (type) {
     case Elements.paragraph: // Paragraph
-      return <p key={key} className="my-1">{children}</p>
+      return <p key={key} className="my-1 text-center">{children}</p>
 
     case Elements.hyperlink: // Hyperlinks
-        console.log("hyper")
         return (
             <a
                 key={key}
