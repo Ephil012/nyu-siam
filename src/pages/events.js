@@ -55,6 +55,7 @@ const Events = ({data}) => {
           <p className="text-xl">{event.data.description.text}</p>
           <div className="flex flex-wrap flex-col space-y-5 items-center lg:flex-row lg:space-x-10 lg:space-y-0">
             {event.data.rsvp.url != null ? <a href={event.data.rsvp.url}><button className="bg-purple-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">RSVP</button></a>: null }
+            {event.data.zoom.url != null ? <a href={event.data.zoom.url}><button className="bg-blue-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Zoom</button></a>: null }
             {event.data.youtube.url != null ? <a href={event.data.youtube.url}><button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">YouTube</button></a>: null }
           </div>
         </div>
@@ -106,6 +107,9 @@ query EventQuery {
           url
         }
         youtube {
+          url
+        }
+        zoom {
           url
         }
       }
