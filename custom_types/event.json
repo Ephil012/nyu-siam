@@ -36,6 +36,13 @@
         "select" : null
       }
     },
+    "zoom" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "zoom",
+        "select" : null
+      }
+    },
     "dates" : {
       "type" : "Group",
       "config" : {
