@@ -112,6 +112,12 @@ query EventQuery {
         zoom {
           url
         }
+        podcast {
+          url
+        }
+        comments {
+          url
+        }
       }
     }
   }
