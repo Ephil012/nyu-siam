@@ -109,6 +109,12 @@ export const query = graphql`
           zoom {
             url
           }
+          podcast {
+            url
+          }
+          comments {
+            url
+          }
         }
       }
     }
