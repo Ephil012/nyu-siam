@@ -8,12 +8,25 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 const Events = ({data}) => {
+  const allEvents = data.allPrismicEvent.nodes.map((event) => {
+    const dates = event.data.dates.map((item) => new Date(item.time));
+    // Sort dates within each event
+    dates.sort((a, b) => a - b);
+    
+    return {
+      ...event,
+      dates,
+      earliestDate: dates[0], // Keep track of the earliest date for sorting
+    };
+  });
+
+  allEvents.sort((a, b) => a.earliestDate - b.earliestDate);
+
+  
   const upcomingEventsList = []
   const pastEventsList = []
-  data.allPrismicEvent.nodes.forEach((event) => {
-    const dates = []
-    const dateStrings = []
-    event.data.dates.forEach((item) => {
+  allEvents.forEach((event) => {
+    const dateStrings = event.dates.map((date) => {
       const date = new Date(item.time)
       console.log(date.toDateString())
       const day = String(date.getUTCDate()).padStart(2,'0')
