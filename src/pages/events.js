@@ -45,10 +45,6 @@ const Events = ({data}) => {
       }
     })
 
-    //sort testing
-    datas.sort((a,b) => a-b)
-    var upcoming = dates.some(data => new Date() <= date)
-
     var eventItem = (
       <div key={event.id} className="flex flex-col items-center rounded-xl my-10 space-y-5 lg:space-y-0 lg:items-start lg:space-x-10 lg:flex-row">
         <GatsbyImage objectFit="contain" image={event.data.picture.gatsbyImageData} alt="" className="w-80 h-80 flex-shrink-0"></GatsbyImage>
@@ -78,10 +74,6 @@ const Events = ({data}) => {
       )
     }
   })
-
-  //sort upcoming
-    upcomingEventsList.sort((a, b) => new Date(a.props.children[1].props.children[1].props.children[1]) - new Date(b.props.children[1].props.children[1].props.children[1]));
-    pastEventsList.sort((a, b) => new Date(a.props.children[1].props.children[1].props.children[1]) - new Date(b.props.children[1].props.children[1].props.children[1]));
 
   return (
     <div className="bg-purple-200 h-full w-full flex flex-col">
