@@ -36,7 +36,19 @@ const Events = ({data}) => {
       dates.push(date)
       dateStrings.push(fullDate)
     })
+
+    const eventsWithEarliestDate = data.allPrismicEvent.nodes.map(event => {
+        const dates = event.data.dates.map(d => new Date(d.time));
+        dates.sort((a, b) => a - b); // 日期升序排序
+        return {
+          event,
+          earliestDate: dates[0],
+        };
+      });
+    
+    
     // todo sort dates automatically
+    /*
     var upcoming = false
     dates.forEach((date) => {
       const today = new Date()
@@ -44,10 +56,17 @@ const Events = ({data}) => {
         upcoming = true
       }
     })
+    */
 
-    //sort testing
-    datas.sort((a,b) => a-b)
-    var upcoming = dates.some(data => new Date() <= date)
+    // 根据最早的日期对所有事件进行排序
+    eventsWithEarliestDate.sort((a, b) => a.earliestDate - b.earliestDate);
+  
+    // 根据日期分配事件到相应的列表
+    eventsWithEarliestDate.forEach(({ event, earliestDate }) => {
+      const today = new Date();
+      const isUpcoming = today <= earliestDate;
+  
+  
 
     var eventItem = (
       <div key={event.id} className="flex flex-col items-center rounded-xl my-10 space-y-5 lg:space-y-0 lg:items-start lg:space-x-10 lg:flex-row">
