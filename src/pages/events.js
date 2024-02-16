@@ -26,27 +26,6 @@ const Events = ({data}) => {
     const dateStrings = []
     event.data.dates.forEach((item) => {
       const today = new Data();
-      const date = new Date(item.time)
-      console.log(date.toDateString())
-      const day = String(date.getUTCDate()).padStart(2,'0')
-      const month = String(date.getUTCMonth() + 1).padStart(2,'0')
-      const year = String(date.getUTCFullYear())
-
-      let fullDate = month + "/" + day + "/" + year + " @ "
-
-      let hour = date.getUTCHours() - 4
-      const minute = String(date.getUTCMinutes()).padStart(2,'0')
-
-      if (hour >= 12) {
-        if (hour > 12) {
-          hour = hour - 12
-        }
-        fullDate += String(hour).padStart(2,'0') + ":" + minute + " pm"
-      } else {
-        fullDate += String(hour).padStart(2,'0') + ":" + minute + " am"
-      }
-      dates.push(date)
-      dateStrings.push(fullDate)
     })
     
     var eventItem = (
