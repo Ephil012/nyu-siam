@@ -57,8 +57,8 @@ const Events = ({data}) => {
             {event.data.rsvp.url != null ? <a href={event.data.rsvp.url}><button className="bg-purple-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">RSVP</button></a>: null }
             {event.data.zoom.url != null ? <a href={event.data.zoom.url}><button className="bg-blue-700 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Zoom</button></a>: null }
             {event.data.youtube.url != null ? <a href={event.data.youtube.url}><button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">YouTube</button></a>: null }
-            {event.data.podcast.url != null ? <a href={event.data.podcast.url}><button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Podcast</button></a>: null }
-            {event.data.comments.url != null ? <a href={event.data.comments.url}><button className="bg-red-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Comments</button></a>: null }
+            {event.data.podcast.url != null ? <a href={event.data.podcast.url}><button className="bg-green-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Podcast</button></a>: null }
+            {event.data.comments.url != null ? <a href={event.data.comments.url}><button className="bg-orange-600 font-semibold text-xl px-10 py-3 w-48 rounded-xl text-white">Comments</button></a>: null }
           </div>
         </div>
       </div>
