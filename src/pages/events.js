@@ -20,42 +20,38 @@ const Events = ({data}) => {
     };
   });
 
-  allEvents.sort((a, b) => a.earliestDate - b.earliestDate);
+  allEvents.sort((a, b) => b.earliestDate - a.earliestDate);
 
   
   const upcomingEventsList = []
   const pastEventsList = []
   allEvents.forEach((event) => {
-    const dateStrings = event.dates.map((date) => {
-      const date = new Date(item.time)
-      console.log(date.toDateString())
-      const day = String(date.getUTCDate()).padStart(2,'0')
-      const month = String(date.getUTCMonth() + 1).padStart(2,'0')
-      const year = String(date.getUTCFullYear())
+    const dateStrings = event.dates.map((item) => {
+      const eventDate = new Date(item); // Changed 'date' to 'eventDate' to avoid conflict
+      const day = String(eventDate.getUTCDate()).padStart(2, '0');
+      const month = String(eventDate.getUTCMonth() + 1).padStart(2, '0');
+      const year = String(eventDate.getUTCFullYear());
 
-      let fullDate = month + "/" + day + "/" + year + " @ "
-
-      let hour = date.getUTCHours() - 4
-      const minute = String(date.getUTCMinutes()).padStart(2,'0')
+      let fullDate = month + "/" + day + "/" + year + " @ ";
+      let hour = eventDate.getUTCHours() - 4; // Adjusted as per timezone, ensure this matches your target timezone
+      const minute = String(eventDate.getUTCMinutes()).padStart(2, '0');
 
       if (hour >= 12) {
-        if (hour > 12) {
-          hour = hour - 12
-        }
-        fullDate += String(hour).padStart(2,'0') + ":" + minute + " pm"
+        if (hour > 12) hour -= 12;
+        fullDate += `${hour.toString().padStart(2, '0')}:${minute} PM`;
       } else {
-        fullDate += String(hour).padStart(2,'0') + ":" + minute + " am"
+        if (hour === 0) hour = 12; // Adjust for 12 AM
+        fullDate += `${hour.toString().padStart(2, '0')}:${minute} AM`;
       }
-      dates.push(date)
-      dateStrings.push(fullDate)
-    })
+      return fullDate; // Changed from modifying 'dates' array to returning 'fullDate'
+    });
     // todo sort dates automatically
     var upcoming = false
-    dates.forEach((date) => {
-      const today = new Date()
-      if(today <= date) {
-        upcoming = true
-      }
+    allEvents.forEach((event) => {
+      var upcoming = event.dates.some((eventDate) => {
+        const today = new Date();
+        return today <= eventDate;
+      });
     })
 
     var eventItem = (
